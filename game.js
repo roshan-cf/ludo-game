@@ -5,72 +5,29 @@ const COLORS = {
     yellow: { start: 39 }
 };
 
-const BOARD_LAYOUT = [
-    { row: 6, col: 6 }, { row: 6, col: 7 }, { row: 6, col: 8 },
-    { row: 7, col: 8 }, { row: 8, col: 8 },
-    { row: 8, col: 7 }, { row: 8, col: 6 },
-    { row: 7, col: 6 }
-];
-
 const MAIN_PATH = [
-    { row: 7, col: 1 }, { row: 7, col: 2 }, { row: 7, col: 3 }, { row: 7, col: 4 }, { row: 7, col: 5 },
-    { row: 6, col: 5 }, { row: 5, col: 5 }, { row: 4, col: 5 }, { row: 3, col: 5 }, { row: 2, col: 5 }, { row: 1, col: 5 },
-    { row: 1, col: 6 }, { row: 1, col: 7 },
-    { row: 2, col: 7 }, { row: 3, col: 7 }, { row: 4, col: 7 }, { row: 5, col: 7 }, { row: 6, col: 7 },
-    { row: 6, col: 8 }, { row: 6, col: 9 }, { row: 5, col: 9 }, { row: 4, col: 9 }, { row: 3, col: 9 }, { row: 2, col: 9 }, { row: 1, col: 9 },
-    { row: 1, col: 10 }, { row: 1, col: 11 }, { row: 1, col: 12 }, { row: 1, col: 13 },
-    { row: 2, col: 13 }, { row: 3, col: 13 }, { row: 4, col: 13 }, { row: 5, col: 13 }, { row: 6, col: 13 },
-    { row: 7, col: 14 },
-    { row: 8, col: 14 },
-    { row: 9, col: 13 }, { row: 10, col: 13 }, { row: 11, col: 13 }, { row: 12, col: 13 }, { row: 13, col: 13 },
-    { row: 13, col: 12 }, { row: 13, col: 11 }, { row: 13, col: 10 }, { row: 13, col: 9 },
-    { row: 12, col: 9 }, { row: 11, col: 9 }, { row: 10, col: 9 }, { row: 9, col: 9 }, { row: 8, col: 9 },
-    { row: 8, col: 8 }, { row: 8, col: 7 },
-    { row: 9, col: 7 }, { row: 10, col: 7 }, { row: 11, col: 7 }, { row: 12, col: 7 }, { row: 13, col: 7 },
-    { row: 13, col: 6 }, { row: 13, col: 5 }, { row: 13, col: 4 }, { row: 13, col: 3 }, { row: 13, col: 2 }, { row: 13, col: 1 },
-    { row: 12, col: 1 }, { row: 11, col: 1 }, { row: 10, col: 1 }, { row: 9, col: 1 }, { row: 8, col: 1 },
-    { row: 7, col: 1 }
+    { r: 7, c: 1 }, { r: 7, c: 2 }, { r: 7, c: 3 }, { r: 7, c: 4 }, { r: 7, c: 5 },
+    { r: 6, c: 5 }, { r: 5, c: 5 }, { r: 4, c: 5 }, { r: 3, c: 5 }, { r: 2, c: 5 }, { r: 1, c: 5 },
+    { r: 1, c: 6 }, { r: 1, c: 7 }, { r: 1, c: 8 }, { r: 1, c: 9 },
+    { r: 2, c: 9 }, { r: 3, c: 9 }, { r: 4, c: 9 }, { r: 5, c: 9 }, { r: 6, c: 9 },
+    { r: 7, c: 10 }, { r: 7, c: 11 }, { r: 7, c: 12 }, { r: 7, c: 13 }, { r: 7, c: 14 },
+    { r: 8, c: 14 }, { r: 9, c: 14 },
+    { r: 9, c: 13 }, { r: 9, c: 12 }, { r: 9, c: 11 }, { r: 9, c: 10 }, { r: 9, c: 9 },
+    { r: 10, c: 9 }, { r: 11, c: 9 }, { r: 12, c: 9 }, { r: 13, c: 9 }, { r: 14, c: 9 },
+    { r: 14, c: 8 }, { r: 14, c: 7 }, { r: 14, c: 6 }, { r: 14, c: 5 },
+    { r: 13, c: 5 }, { r: 12, c: 5 }, { r: 11, c: 5 }, { r: 10, c: 5 },
+    { r: 9, c: 4 }, { r: 9, c: 3 }, { r: 9, c: 2 }, { r: 9, c: 1 },
+    { r: 8, c: 1 }
 ];
 
 const HOME_PATHS = {
-    red: [
-        { row: 7, col: 2 }, { row: 7, col: 3 }, { row: 7, col: 4 }, { row: 7, col: 5 }, { row: 7, col: 6 }
-    ],
-    green: [
-        { row: 2, col: 7 }, { row: 3, col: 7 }, { row: 4, col: 7 }, { row: 5, col: 7 }, { row: 6, col: 7 }
-    ],
-    blue: [
-        { row: 7, col: 12 }, { row: 7, col: 11 }, { row: 7, col: 10 }, { row: 7, col: 9 }, { row: 7, col: 8 }
-    ],
-    yellow: [
-        { row: 12, col: 7 }, { row: 11, col: 7 }, { row: 10, col: 7 }, { row: 9, col: 7 }, { row: 8, col: 7 }
-    ]
+    red:    [{r:7,c:7}, {r:6,c:7}, {r:5,c:7}, {r:4,c:7}, {r:3,c:7}, {r:2,c:7}, {r:1,c:7}],
+    green:  [{r:7,c:7}, {r:8,c:7}, {r:9,c:7}, {r:10,c:7}, {r:11,c:7}, {r:12,c:7}, {r:13,c:7}],
+    blue:   [{r:7,c:7}, {r:7,c:6}, {r:7,c:5}, {r:7,c:4}, {r:7,c:3}, {r:7,c:2}, {r:7,c:1}],
+    yellow: [{r:7,c:7}, {r:7,c:8}, {r:7,c:9}, {r:7,c:10}, {r:7,c:11}, {r:7,c:12}, {r:7,c:13}]
 };
 
-const SAFE_SPOTS = [
-    { row: 7, col: 1 },
-    { row: 1, col: 7 },
-    { row: 7, col: 13 },
-    { row: 13, col: 7 },
-    { row: 7, col: 9 },
-    { row: 3, col: 7 },
-    { row: 7, col: 5 },
-    { row: 11, col: 7 }
-];
-
-const BASE_POSITIONS = {
-    red: { rowStart: 1, rowEnd: 6, colStart: 1, colEnd: 6 },
-    green: { rowStart: 1, rowEnd: 6, colStart: 9, colEnd: 14 },
-    blue: { rowStart: 9, rowEnd: 14, colStart: 9, colEnd: 14 },
-    yellow: { rowStart: 9, rowEnd: 14, colStart: 1, colEnd: 6 }
-};
-
-const HOME_TRIANGLE = {
-    red: { rowStart: 1, rowEnd: 6, colStart: 7, colEnd: 7 },
-    green: { rowStart: 7, rowEnd: 7, colStart: 9, colEnd: 14 },
-    blue: { rowStart: 9, rowEnd: 14, colStart: 7, colEnd: 7 },
-    yellow: { rowStart: 7, rowEnd: 7, colStart: 1, colEnd: 6 }
-};
+const SAFE_POSITIONS = [0, 8, 13, 21, 26, 34, 39, 47];
 
 let gameState = {
     players: [],
@@ -121,20 +78,25 @@ function createBoard() {
     const board = document.getElementById('ludo-board');
     board.innerHTML = '';
 
-    Object.keys(BASE_POSITIONS).forEach(color => {
-        const pos = BASE_POSITIONS[color];
-        
+    const bases = [
+        { color: 'red', r1: 1, r2: 7, c1: 1, c2: 7 },
+        { color: 'green', r1: 1, r2: 7, c1: 9, c2: 15 },
+        { color: 'blue', r1: 9, r2: 15, c1: 9, c2: 15 },
+        { color: 'yellow', r1: 9, r2: 15, c1: 1, c2: 7 }
+    ];
+
+    bases.forEach(base => {
         const baseEl = document.createElement('div');
-        baseEl.className = `base ${color}`;
-        baseEl.style.gridRow = `${pos.rowStart} / ${pos.rowEnd + 1}`;
-        baseEl.style.gridColumn = `${pos.colStart} / ${pos.colEnd + 1}`;
+        baseEl.className = `base ${base.color}`;
+        baseEl.style.gridRow = `${base.r1} / ${base.r2}`;
+        baseEl.style.gridColumn = `${base.c1} / ${base.c2}`;
 
         const inner = document.createElement('div');
         inner.className = 'base-inner';
         for (let i = 0; i < 4; i++) {
             const spot = document.createElement('div');
             spot.className = 'base-spot';
-            spot.dataset.baseColor = color;
+            spot.dataset.baseColor = base.color;
             spot.dataset.baseIndex = i;
             inner.appendChild(spot);
         }
@@ -142,94 +104,45 @@ function createBoard() {
         board.appendChild(baseEl);
     });
 
-    const pathMap = new Map();
-    MAIN_PATH.forEach((coord, index) => {
-        const key = `${coord.row}-${coord.col}`;
-        pathMap.set(key, { index, type: 'main' });
-    });
-
-    Object.keys(HOME_PATHS).forEach(color => {
-        HOME_PATHS[color].forEach((coord, index) => {
-            const key = `${coord.row}-${coord.col}`;
-            pathMap.set(key, { index, type: 'home', color, homeIndex: index });
-        });
-    });
-
-    const allCoords = new Set();
-    MAIN_PATH.forEach(c => allCoords.add(`${c.row}-${c.col}`));
-    Object.values(HOME_PATHS).forEach(arr => arr.forEach(c => allCoords.add(`${c.row}-${c.col}`)));
-
-    for (let row = 1; row <= 13; row++) {
-        for (let col = 1; col <= 13; col++) {
-            const key = `${row}-${col}`;
-            if (!allCoords.has(key) && !isBaseArea(row, col)) {
-                const cell = document.createElement('div');
-                cell.className = 'cell empty-cell';
-                cell.style.gridRow = row;
-                cell.style.gridColumn = col;
-                board.appendChild(cell);
-            }
-        }
-    }
-
-    MAIN_PATH.forEach((coord, index) => {
+    MAIN_PATH.forEach((coord, idx) => {
         const cell = document.createElement('div');
         cell.className = 'cell path-cell';
-        cell.style.gridRow = coord.row;
-        cell.style.gridColumn = coord.col;
-        cell.dataset.pathIndex = index;
-        cell.dataset.type = 'main';
-
-        const isSafe = isSafeSpot(coord.row, coord.col);
-        if (isSafe) {
+        cell.style.gridRow = coord.r;
+        cell.style.gridColumn = coord.c;
+        cell.dataset.pathIndex = idx;
+        
+        if (SAFE_POSITIONS.includes(idx)) {
             cell.classList.add('safe');
-            cell.dataset.safeColor = getSafeColor(index);
-            cell.classList.add(`${cell.dataset.safeColor}-safe`);
+            const colorMap = {0:'red',8:'green',13:'blue',21:'yellow',26:'red',34:'green',39:'blue',47:'yellow'};
+            cell.classList.add(`${colorMap[idx]}-safe`);
         }
-
+        
         board.appendChild(cell);
     });
 
     Object.keys(HOME_PATHS).forEach(color => {
-        HOME_PATHS[color].forEach((coord, index) => {
+        HOME_PATHS[color].forEach((coord, idx) => {
             const cell = document.createElement('div');
             cell.className = `cell home-cell ${color}-home`;
-            cell.style.gridRow = coord.row;
-            cell.style.gridColumn = coord.col;
-            cell.dataset.type = 'home';
+            cell.style.gridRow = coord.r;
+            cell.style.gridColumn = coord.c;
             cell.dataset.color = color;
-            cell.dataset.homeIndex = index;
+            cell.dataset.homeIndex = idx;
             board.appendChild(cell);
         });
     });
 
     const center = document.createElement('div');
     center.className = 'center-home';
-    center.style.gridRow = '7 / 8';
-    center.style.gridColumn = '7 / 8';
+    center.style.gridRow = '7 / 10';
+    center.style.gridColumn = '7 / 10';
 
     ['red', 'green', 'blue', 'yellow'].forEach(color => {
-        const triangle = document.createElement('div');
-        triangle.className = `home-triangle ${color}`;
-        center.appendChild(triangle);
+        const tri = document.createElement('div');
+        tri.className = `home-triangle ${color}`;
+        center.appendChild(tri);
     });
     board.appendChild(center);
-}
-
-function isBaseArea(row, col) {
-    return (row >= 1 && row <= 6 && col >= 1 && col <= 6) ||
-           (row >= 1 && row <= 6 && col >= 8 && col <= 13) ||
-           (row >= 8 && row <= 13 && col >= 1 && col <= 6) ||
-           (row >= 8 && row <= 13 && col >= 8 && col <= 13);
-}
-
-function isSafeSpot(row, col) {
-    return SAFE_SPOTS.some(s => s.row === row && s.col === col);
-}
-
-function getSafeColor(pathIndex) {
-    const safeMap = { 0: 'red', 8: 'green', 13: 'blue', 21: 'yellow', 26: 'red', 34: 'green', 39: 'blue', 47: 'yellow' };
-    return safeMap[pathIndex];
 }
 
 function startGame() {
@@ -263,39 +176,26 @@ function startGame() {
     showMessage(`${gameState.players[0].name}'s turn - Roll the dice!`);
 }
 
-function getPathPosition(color, tokenPos) {
-    if (tokenPos === -1) return null;
-    if (tokenPos >= 51 && tokenPos <= 55) {
-        return { type: 'home', color, homeIndex: tokenPos - 51 };
-    }
-    if (tokenPos === 56) return { type: 'home' };
-    
-    const startIndex = COLORS[color].start;
-    let pathIndex = (startIndex + tokenPos) % 52;
-    return { type: 'main', pathIndex };
-}
-
 function findCellForPosition(color, position) {
     if (position === -1) return null;
     
-    if (position >= 51 && position <= 55) {
-        const homeIndex = position - 51;
-        const coords = HOME_PATHS[color][homeIndex];
+    if (position >= 51 && position <= 57) {
+        const homeIdx = position - 51;
+        const coords = HOME_PATHS[color][homeIdx];
         if (coords) {
-            return document.querySelector(`.cell[data-row="${coords.row}"][data-col="${coords.col}"]`);
+            return document.querySelector(`.cell[data-row="${coords.r}"][data-col="${coords.c}"]`);
+        }
+        if (position === 57) {
+            return document.querySelector('.center-home');
         }
         return null;
     }
     
-    if (position >= 56) {
-        return document.querySelector('.center-home');
-    }
-    
-    const startIndex = COLORS[color].start;
-    let pathIndex = (startIndex + position) % 52;
-    const coords = MAIN_PATH[pathIndex];
+    const startIdx = COLORS[color].start;
+    let pathIdx = (startIdx + position) % 52;
+    const coords = MAIN_PATH[pathIdx];
     if (coords) {
-        return document.querySelector(`.cell[data-row="${coords.row}"][data-col="${coords.col}"]`);
+        return document.querySelector(`.cell[data-row="${coords.r}"][data-col="${coords.c}"]`);
     }
     return null;
 }
@@ -304,8 +204,8 @@ function renderTokens() {
     document.querySelectorAll('.token').forEach(t => t.remove());
 
     Object.keys(gameState.tokens).forEach(color => {
-        gameState.tokens[color].forEach((pos, index) => {
-            createTokenElement(color, pos, index);
+        gameState.tokens[color].forEach((pos, idx) => {
+            createTokenElement(color, pos, idx);
         });
     });
 }
@@ -317,42 +217,41 @@ function createTokenElement(color, position, index) {
     token.dataset.index = index;
 
     if (position === -1) {
-        const baseSpots = document.querySelectorAll(`.base-spot[data-base-color="${color}"]`);
-        if (baseSpots[index]) {
-            const spot = baseSpots[index];
+        const spots = document.querySelectorAll(`.base-spot[data-base-color="${color}"]`);
+        if (spots[index]) {
+            const spot = spots[index];
             if (!spot.querySelector('.token')) {
                 token.classList.add('in-base');
                 spot.appendChild(token);
             } else {
-                const group = spot.querySelector('.token-group') || createTokenGroup(spot);
+                let group = spot.querySelector('.token-group');
+                if (!group) {
+                    group = document.createElement('div');
+                    group.className = 'token-group';
+                    spot.innerHTML = '';
+                    spot.appendChild(group);
+                }
                 token.classList.add('in-base');
                 group.appendChild(token);
             }
         }
-    } else if (position >= 51 && position <= 55) {
-        const homePos = position - 51;
-        const coords = HOME_PATHS[color][homePos];
-        if (coords) {
-            const cell = document.querySelector(`.cell[data-row="${coords.row}"][data-col="${coords.col}"]`);
-            if (cell) cell.appendChild(token);
-        }
-    } else if (position >= 56) {
-        const center = document.querySelector('.center-home');
-        if (center) center.appendChild(token);
     } else {
         const cell = findCellForPosition(color, position);
         if (cell) {
-            const existingTokens = cell.querySelectorAll('.token');
-            if (existingTokens.length === 0) {
+            const existing = cell.querySelectorAll('.token');
+            if (existing.length === 0) {
                 cell.appendChild(token);
-            } else if (existingTokens.length < 3) {
+            } else if (existing.length < 4) {
                 let group = cell.querySelector('.token-group');
                 if (!group) {
-                    group = createTokenGroup(cell);
-                    existingTokens.forEach(t => {
+                    group = document.createElement('div');
+                    group.className = 'token-group';
+                    existing.forEach(t => {
                         t.classList.remove('in-base');
                         group.appendChild(t);
                     });
+                    cell.innerHTML = '';
+                    cell.appendChild(group);
                 }
                 group.appendChild(token);
             }
@@ -363,14 +262,6 @@ function createTokenElement(color, position, index) {
         e.stopPropagation();
         handleTokenClick(color, index);
     });
-}
-
-function createTokenGroup(container) {
-    const group = document.createElement('div');
-    group.className = 'token-group';
-    container.innerHTML = '';
-    container.appendChild(group);
-    return group;
 }
 
 function rollDice() {
@@ -397,7 +288,6 @@ function rollDice() {
     setTimeout(() => {
         dice.classList.remove('rolling');
         dice.style.transform = rotations[value];
-        
         setTimeout(() => handleDiceRoll(value), 300);
     }, 600);
 }
@@ -408,9 +298,9 @@ function handleDiceRoll(value) {
     const positions = gameState.tokens[color];
     const validMoves = [];
 
-    positions.forEach((pos, index) => {
-        if (canMoveToken(color, index, value)) {
-            validMoves.push(index);
+    positions.forEach((pos, idx) => {
+        if (canMoveToken(color, idx, value)) {
+            validMoves.push(idx);
         }
     });
 
@@ -441,33 +331,21 @@ function handleDiceRoll(value) {
     }
 }
 
-function canMoveToken(color, index, diceValue) {
-    const position = gameState.tokens[color][index];
+function canMoveToken(color, idx, diceValue) {
+    const position = gameState.tokens[color][idx];
 
-    if (position === -1) {
-        return diceValue === 6;
-    }
+    if (position === -1) return diceValue === 6;
 
-    if (position >= 51 && position <= 55) {
+    if (position >= 51 && position <= 57) {
         const homePos = position - 51;
-        return homePos + diceValue <= 4;
+        return homePos + diceValue <= 6;
     }
 
-    if (position >= 56) {
-        return false;
-    }
-
-    const startIndex = COLORS[color].start;
-    let currentPathIndex = (startIndex + position) % 52;
-    let stepsToHome = getStepsToHome(color, currentPathIndex);
+    const startIdx = COLORS[color].start;
+    let currentPathIdx = (startIdx + position) % 52;
+    const stepsToHome = 51 - currentPathIdx;
     
     return diceValue <= stepsToHome;
-}
-
-function getStepsToHome(color, pathIndex) {
-    const startIndex = COLORS[color].start;
-    let distance = (pathIndex - startIndex + 52) % 52;
-    return 51 - distance;
 }
 
 function handleTokenClick(color, index) {
@@ -480,58 +358,54 @@ function handleTokenClick(color, index) {
     moveToken(color, index, diceValue);
 }
 
-function moveToken(color, index, diceValue) {
+function moveToken(color, idx, diceValue) {
     const positions = gameState.tokens[color];
-    const currentPos = positions[index];
+    const currentPos = positions[idx];
     const player = gameState.players[gameState.currentPlayer];
 
     if (currentPos === -1) {
-        positions[index] = 0;
+        positions[idx] = 0;
         showMessage(`${player.name} released a token!`, 'bonus');
-    } else if (currentPos >= 51 && currentPos <= 55) {
+    } else if (currentPos >= 51 && currentPos <= 57) {
         const newHomePos = currentPos - 51 + diceValue;
-        if (newHomePos === 4) {
-            positions[index] = 56;
+        if (newHomePos === 6) {
+            positions[idx] = 57;
             player.tokensHome++;
             showMessage(`${player.name}'s token reached home!`, 'bonus');
-            
             if (player.tokensHome === 4) {
                 showWinner();
                 return;
             }
         } else {
-            positions[index] = 51 + newHomePos;
+            positions[idx] = 51 + newHomePos;
         }
     } else {
-        const startIndex = COLORS[color].start;
-        let currentPathIndex = (startIndex + currentPos) % 52;
-        const stepsToHome = getStepsToHome(color, currentPathIndex);
+        const startIdx = COLORS[color].start;
+        let currentPathIdx = (startIdx + currentPos) % 52;
+        const stepsToHome = 51 - currentPathIdx;
         
-        if (diceValue > stepsToHome) {
-            return;
-        }
+        if (diceValue > stepsToHome) return;
         
         const newPos = currentPos + diceValue;
         
         if (currentPos + diceValue >= 51) {
-            positions[index] = currentPos + diceValue;
-            const newHomePos = positions[index] - 51;
-            if (newHomePos === 4) {
-                positions[index] = 56;
+            positions[idx] = currentPos + diceValue;
+            const newHomePos = positions[idx] - 51;
+            if (newHomePos === 6) {
+                positions[idx] = 57;
                 player.tokensHome++;
                 showMessage(`${player.name}'s token reached home!`, 'bonus');
-                
                 if (player.tokensHome === 4) {
                     showWinner();
                     return;
                 }
             }
         } else {
-            positions[index] = newPos;
+            positions[idx] = newPos;
             
             const captured = checkCapture(color, newPos);
             if (captured) {
-                showMessage(`${player.name} captured ${captured}'s token!`, 'capture');
+                showMessage(`${player.name} captured ${captected}'s token!`, 'capture');
             } else if (checkBlock(color, newPos)) {
                 showMessage(`${player.name} formed a block!`, 'block');
             }
@@ -549,11 +423,10 @@ function moveToken(color, index, diceValue) {
 }
 
 function checkCapture(color, tokenPos) {
-    const startIndex = COLORS[color].start;
-    let pathIndex = (startIndex + tokenPos) % 52;
+    const startIdx = COLORS[color].start;
+    let pathIdx = (startIdx + tokenPos) % 52;
     
-    const safeIndices = [0, 8, 13, 21, 26, 34, 39, 47];
-    if (safeIndices.includes(pathIndex)) return null;
+    if (SAFE_POSITIONS.includes(pathIdx)) return null;
 
     for (const oppColor of Object.keys(gameState.tokens)) {
         if (oppColor === color) continue;
@@ -563,12 +436,12 @@ function checkCapture(color, tokenPos) {
 
         for (let i = 0; i < gameState.tokens[oppColor].length; i++) {
             const oppPos = gameState.tokens[oppColor][i];
-            if (oppPos === -1 || oppPos === 56 || oppPos >= 51) continue;
+            if (oppPos === -1 || oppPos === 57 || oppPos >= 51) continue;
 
-            const oppStartIndex = COLORS[oppColor].start;
-            const oppPathIndex = (oppStartIndex + oppPos) % 52;
+            const oppStartIdx = COLORS[oppColor].start;
+            const oppPathIdx = (oppStartIdx + oppPos) % 52;
             
-            if (pathIndex === oppPathIndex) {
+            if (pathIdx === oppPathIdx) {
                 gameState.tokens[oppColor][i] = -1;
                 return oppColor;
             }
@@ -579,14 +452,14 @@ function checkCapture(color, tokenPos) {
 
 function checkBlock(color, tokenPos) {
     const positions = gameState.tokens[color];
-    const startIndex = COLORS[color].start;
-    let pathIndex = (startIndex + tokenPos) % 52;
+    const startIdx = COLORS[color].start;
+    let pathIdx = (startIdx + tokenPos) % 52;
     
     let count = 0;
     for (const pos of positions) {
         if (pos === -1 || pos >= 51) continue;
-        const pIndex = (startIndex + pos) % 52;
-        if (pIndex === pathIndex) count++;
+        const pIdx = (startIdx + pos) % 52;
+        if (pIdx === pathIdx) count++;
     }
     
     return count >= 2;

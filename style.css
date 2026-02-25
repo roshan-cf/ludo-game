@@ -27,7 +27,6 @@ body {
     display: block;
 }
 
-/* Setup Screen */
 #setup-screen {
     background: white;
     border-radius: 20px;
@@ -151,7 +150,6 @@ body {
     box-shadow: 0 10px 30px rgba(42, 157, 143, 0.4);
 }
 
-/* Game Screen */
 #game-screen {
     background: white;
     border-radius: 20px;
@@ -190,7 +188,6 @@ body {
     color: #333;
 }
 
-/* 3D Dice */
 .dice-container {
     display: flex;
     align-items: center;
@@ -348,7 +345,6 @@ body {
     color: #0c5460;
 }
 
-/* Board Container */
 .board-container {
     display: flex;
     justify-content: center;
@@ -356,23 +352,21 @@ body {
 }
 
 .ludo-board {
-    width: 520px;
-    height: 520px;
+    width: 600px;
+    height: 600px;
     display: grid;
-    grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(13, 1fr);
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
     background: #fff;
     border: 3px solid #333;
     border-radius: 5px;
 }
 
-/* Board Sections */
 .base {
     border: 2px solid #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 .base.red { background: #E63946; }
@@ -381,26 +375,25 @@ body {
 .base.yellow { background: #F4A261; }
 
 .base-inner {
-    width: 65%;
-    height: 65%;
+    width: 60%;
+    height: 60%;
     background: white;
     border-radius: 50%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 6px;
+    gap: 8px;
     padding: 12px;
 }
 
 .base-spot {
-    background: #f0f0f0;
+    background: #eee;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Main cells */
 .cell {
     border: 1px solid #ccc;
     display: flex;
@@ -408,11 +401,6 @@ body {
     align-items: center;
     position: relative;
     background: #fffcf5;
-}
-
-.cell.empty-cell {
-    background: transparent;
-    border: none;
 }
 
 .cell.path-cell {
@@ -435,8 +423,8 @@ body {
 .cell.safe::before {
     content: '★';
     position: absolute;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
     z-index: 1;
 }
 
@@ -445,10 +433,9 @@ body {
 .cell.blue-safe { background: #457B9D; }
 .cell.yellow-safe { background: #F4A261; }
 
-/* Center home */
 .center-home {
-    grid-row: 7 / 8;
-    grid-column: 7 / 8;
+    grid-row: 7 / 10;
+    grid-column: 7 / 10;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -460,34 +447,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 .home-triangle.red {
     background: linear-gradient(135deg, #E63946 50%, transparent 50%);
-    grid-column: 1;
-    grid-row: 1;
 }
 
 .home-triangle.green {
     background: linear-gradient(45deg, #2A9D8F 50%, transparent 50%);
-    grid-column: 2;
-    grid-row: 1;
 }
 
 .home-triangle.blue {
     background: linear-gradient(225deg, #457B9D 50%, transparent 50%);
-    grid-column: 1;
-    grid-row: 2;
 }
 
 .home-triangle.yellow {
     background: linear-gradient(315deg, #F4A261 50%, transparent 50%);
-    grid-column: 2;
-    grid-row: 2;
 }
 
-/* Tokens */
 .token {
     width: 80%;
     height: 80%;
@@ -532,7 +509,6 @@ body {
     height: 60%;
 }
 
-/* Multiple tokens on same cell */
 .token-group {
     display: flex;
     flex-wrap: wrap;
@@ -549,7 +525,6 @@ body {
     height: 50%;
 }
 
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -612,8 +587,7 @@ body {
     box-shadow: 0 10px 30px rgba(42, 157, 143, 0.4);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 650px) {
     .ludo-board {
         width: 360px;
         height: 360px;
